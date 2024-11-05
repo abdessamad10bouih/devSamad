@@ -1,8 +1,6 @@
 import { Copy } from "lucide-react";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
-import {Prism as SyntaxHighlighter} from 'prismjs';
-import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 function BorderControll() {
   const [color, setColor] = useState("border-color");
@@ -24,9 +22,6 @@ function BorderControll() {
     toast.success("Copied");
   };
 
-  useEffect(() => {
-    Prism.highlightAll(); // Trigger syntax highlighting on code change
-  }, [color, topright, bottomright, bottomleft, topleft, width, fill, height, borderWieght, style]);
 
   const codecss = `border: ${borderWieght}px ${style} ${color};\nborder-radius: ${topright}px ${bottomright}px ${bottomleft}px ${topleft}px;\nwidth: ${width}px;\nheight: ${height}px;\nbackground-color: ${fill};`;
   return (
@@ -45,11 +40,9 @@ function BorderControll() {
         ></div>
       </div>
       <div className="w-1/2 h-full sm:h-1/2 sm:w-full sm:gap-5 flex items-center justify-center flex-col p-4">
-        <div className="w-full rounded-md flex items-center p-5 justify-between">
-          <SyntaxHighlighter language="css" style={dark}>
-            {codecss}
-          </SyntaxHighlighter>
-          <Copy onClick={handleCopying} cursor={"pointer"} />
+        <div className="w-full rounded-md flex items-center p-5 justify-between shadow">
+          <p ref={cssCode}>Border: {borderWieght}px {style} {color}; <br />  border-radius: {topright}px {bottomright}px {bottomleft}px {topleft}px; <br /> width: {width}px; <br />height: {height}px; <br />background-color: {fill};</p>
+          <Copy onClick={handleCopying} className="cursor-pointer" />
         </div>
         <div className="w-full h-20 space-x-5 flex items-center justify-between">
           <div className="w-[50%] h-14 border rounded-md flex items-center px-2">
