@@ -3,7 +3,6 @@ import React, { useRef, useState } from "react";
 import toast from "react-hot-toast";
 import {Prism as SyntaxHighlighter} from 'prismjs';
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import 'prismjs/themes/prism.css';
 
 function BorderControll() {
   const [color, setColor] = useState("border-color");
