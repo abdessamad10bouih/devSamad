@@ -1,9 +1,8 @@
 import React from "react";
-import WordPullUp from "@/components/ui/word-pull-up";
-import ShimmerButton from "@/components/ui/shimmer-Button";
-import FlickeringGrid from "@/components/ui/flickering-grid";
-import TypingAnimation from "@/components/ui/typing-animation";
+import FlickeringGrid from "./ui/flickering-grid";
+import TypingAnimation from "./ui/typing-animation";
 import { Link } from "react-router-dom";
+import ShimmerButton from "./ui/shimmer-button";
 
 function Hero() {
   return (
