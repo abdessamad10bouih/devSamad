@@ -1,228 +1,174 @@
 ```markdown
-# AI-Driven Personalized Recommendation System
+# DevSamad
 
-## 1. Project Title and Description
+## 1. Titre et Description du Projet
 
-This repository contains an AI-driven personalized recommendation system designed to suggest relevant items to users based on their past interactions and preferences. The system leverages machine learning models, specifically collaborative filtering and content-based filtering, to generate accurate and personalized recommendations. The backend is built using Python with the FastAPI framework, offering a RESTful API for seamless integration with front-end applications. Data is stored and managed using a PostgreSQL database, and the system incorporates Celery for asynchronous task processing, such as model training and data updates. The project also includes comprehensive unit and integration tests, as well as a Dockerfile for containerization and deployment.
+DevSamad est un portfolio personnel interactif développé avec React et divers outils modernes de développement web. Ce site web présente des informations sur Abdessamad BOUIH, un étudiant à ISTA Ouarzazate, ainsi que des projets, des compétences et des informations de contact. L'interface utilisateur est conçue avec Tailwind CSS et NextUI, offrant une expérience utilisateur riche et réactive.
 
-## 2. Key Features
+## 2. Fonctionnalités
 
-*   **Personalized Recommendations:** Delivers item recommendations tailored to individual user preferences.
-*   **Collaborative Filtering:** Uses user-item interaction data to identify users with similar tastes and recommend items liked by them.
-*   **Content-Based Filtering:** Leverages item metadata (e.g., descriptions, categories) to recommend items similar to those a user has liked in the past.
-*   **RESTful API:** Provides a well-defined API built with FastAPI for easy integration with front-end applications.
-*   **Asynchronous Task Processing:** Uses Celery to handle computationally intensive tasks, such as model training, without blocking API requests.
-*   **Database Integration:** PostgreSQL is used to store user data, item data, and interaction data.
-*   **Containerization:** Dockerfile included for easy deployment and scalability.
-*   **Comprehensive Testing:** Unit and integration tests ensure the reliability and stability of the system.
+- **Présentation du Portfolio**: Affiche une présentation détaillée du portfolio d'Abdessamad BOUIH.
+- **Design Réactif**: Utilise Tailwind CSS pour un design adaptatif sur différents appareils.
+- **Composants UI Modernes**: Implémente des composants d'interface utilisateur avancés avec NextUI.
+- **Animations Fluides**: Incorpore des animations avec Framer Motion pour une expérience utilisateur engageante.
+- **Navigation Facile**: Utilise React Router pour une navigation fluide entre les différentes sections.
+- **Icônes Lucides**: Utilise Lucide React pour des icônes vectorielles claires et esthétiques.
+- **Intégration Spline**: Intégration de scènes 3D interactives créées avec Spline.
+- **Gestion des Thèmes**: Permet de basculer entre différents thèmes pour personnaliser l'apparence du site.
+- **API Key** : Fournit une clé d'API via un fichier `.env` pour accéder à des ressources externes.
 
-## 3. Project Structure
+## 3. Démarrage
 
-The project is structured as follows:
+### Prérequis
+
+Assurez-vous d'avoir Node.js et npm (ou yarn) installés sur votre machine.
+
+- Node.js (version 18 ou supérieure)
+- npm (ou yarn)
+
+### Installation
+
+1.  **Cloner le dépôt :**
+
+    ```bash
+    git clone https://github.com/abdessamad10bouih/devSamad.git
+    cd devSamad
+    ```
+
+2.  **Installer les dépendances :**
+
+    ```bash
+    npm install  # ou yarn install
+    ```
+
+3.  **Configurer les variables d'environnement :**
+
+    Créer un fichier `.env` à la racine du projet avec la variable d'environnement `VITE_API_KEY` :
+
+    ```
+    VITE_API_KEY=votre_clé_api
+    ```
+
+4.  **Démarrer le serveur de développement :**
+
+    ```bash
+    npm run dev  # ou yarn dev
+    ```
+
+    Le site sera accessible à l'adresse indiquée dans la console (généralement `http://localhost:5173`).
+
+## 4. Utilisation
+
+Une fois le serveur de développement lancé, vous pouvez naviguer à travers les différentes sections du portfolio. Le site est conçu pour être intuitif et facile à explorer.
+
+## 5. Structure du Projet
+
+Le projet est structuré de la manière suivante :
 
 ```
-recommendation-system/
-├── app/
-│   ├── __init__.py
-│   ├── api/
-│   │   ├── endpoints/
-│   │   │   ├── items.py  # API endpoints for item-related operations
-│   │   │   └── users.py  # API endpoints for user-related operations
-│   │   ├── models/
-│   │   │   ├── item.py   # Data models for items
-│   │   │   └── user.py   # Data models for users
-│   │   ├── utils/
-│   │   │   └── auth.py   # Authentication utilities
-│   │   └── api.py      # FastAPI application instance and route definitions
-│   ├── core/
-│   │   ├── config.py   # Configuration settings for the application
-│   │   └── database.py # Database connection and setup
-│   ├── ml/
-│   │   ├── models/
-│   │   │   ├── collaborative_filtering.py # Implementation of collaborative filtering model
-│   │   │   └── content_based_filtering.py # Implementation of content-based filtering model
-│   │   ├── train.py    # Scripts for training machine learning models
-│   │   └── utils.py    # Utilities for ML tasks
-│   ├── schemas/        # Pydantic schemas for request and response data validation
-│   │   ├── item.py
-│   │   └── user.py
-│   ├── services/
-│   │   ├── item_service.py # Business logic for item-related operations
-│   │   └── user_service.py # Business logic for user-related operations
-│   └── tasks/          # Celery tasks
-│       └── tasks.py
-├── tests/
-│   ├── conftest.py # Pytest configurations and fixtures
-│   ├── integration/ # Integration Tests
-│   └── unit/        # Unit Tests
-├── .dockerignore
-├── Dockerfile       # Docker configuration
-├── LICENSE
-├── README.md        # Project documentation
-├── celery_worker.py # Celery worker initialization
-├── docker-compose.yml # Docker Compose configuration
-├── requirements.txt   # Project dependencies
-└── start.sh        # Shell script to start the application
+devSamad/
+├── .env               # Variables d'environnement
+├── .gitignore         # Fichier .gitignore
+├── README.md          # Ce fichier
+├── components.json    # Configuration Shadcn UI
+├── eslint.config.js   # Configuration ESLint
+├── index.html         # Point d'entrée HTML
+├── jsconfig.app.json   # Configuration jsconfig pour l'application
+├── jsconfig.json      # Configuration jsconfig principale
+├── jsconfig.node.json  # Configuration jsconfig pour Node
+├── package-lock.json  # Fichier de verrouillage des dépendances npm
+├── package.json       # Fichier de configuration npm
+├── postcss.config.js  # Configuration PostCSS
+├── src/               # Code source de l'application
+│   ├── App.css
+│   ├── App.jsx
+│   ├── assets/
+│   ├── components/
+│   ├── index.css
+│   ├── main.jsx
+│   └── pages/
+├── tailwind.config.js # Configuration Tailwind CSS
+└── vite.config.js     # Configuration Vite
 ```
 
-*   **`app/`:** Contains the core application logic.
-    *   **`api/`:** Defines the RESTful API endpoints.  `api.py` initializes the FastAPI application and registers the routers defined in `endpoints/items.py` and `endpoints/users.py`. The files under `api/models` defines the data models for the API.
-    *   **`core/`:** Contains essential configurations and database connection settings. `config.py` holds environment-specific configurations loaded using Pydantic's `BaseSettings`, while `database.py` establishes the connection to the PostgreSQL database using SQLAlchemy.
-    *   **`ml/`:** Contains the machine learning models and training scripts.  `ml/models` houses the implementation of different recommendation models like collaborative and content-based filtering.  `train.py` contains scripts for training these models and persisting them.
-    *   **`schemas/`:** Defines Pydantic schemas for request and response validation. This ensures data integrity and type safety for API interactions.
-    *   **`services/`:** Contains the business logic for handling user and item related operations. This layer abstracts away the details of data access and manipulation.
-    *   **`tasks/`:** Defines Celery tasks for asynchronous operations, improving API responsiveness.
-*   **`tests/`:** Contains unit and integration tests to ensure code quality. `conftest.py` contains Pytest fixtures that setup test databases.
-*   **`Dockerfile`:** Docker configuration for containerizing the application.
-*   **`docker-compose.yml`:** Docker Compose configuration for managing multi-container deployments (e.g., application, database, Celery worker).
-*   **`requirements.txt`:** Lists the Python dependencies required to run the application.
-*   **`celery_worker.py`:** Initializes the Celery worker.
-*   **`start.sh`:** A shell script to start the application and Celery worker.
-
-## 4. Installation
-
-1.  **Clone the repository:**
-
-    ```bash
-    git clone https://github.com/[your_username]/recommendation-system.git
-    cd recommendation-system
-    ```
-
-2.  **Create a virtual environment:**
-
-    ```bash
-    python3 -m venv venv
-    source venv/bin/activate
-    ```
-
-3.  **Install the dependencies:**
-
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4.  **Set up the database:**
-
-    *   Ensure you have PostgreSQL installed and running.
-    *   Create a database named `recommendation_db` (or configure the database name in `app/core/config.py`).
-    *   Update the database connection URL in `app/core/config.py` to reflect your PostgreSQL credentials. Example: `DATABASE_URL=postgresql://user:password@host:port/database_name`
-
-5. **Configure Environment Variables:**
-
-    *   Create a `.env` file based on the `.env.example` and set the necessary environment variables such as `DATABASE_URL`, `CELERY_BROKER_URL`, and `CELERY_RESULT_BACKEND`. These are crucial for the application to connect to the database and Celery broker.
-
-## 5. Usage
-
-1.  **Start the application:**
-
-    ```bash
-    ./start.sh
-    ```
-
-    This script starts the FastAPI application using Uvicorn and the Celery worker.
-
-2.  **Access the API:**
-
-    The API will be available at `http://localhost:8000`.  You can access the automatically generated Swagger UI at `http://localhost:8000/docs` for API documentation and testing.
-
-3.  **Example API requests:**
-
-    *   **Get all users:** `GET /users`
-    *   **Get a specific user:** `GET /users/{user_id}`
-    *   **Get all items:** `GET /items`
-    *   **Get recommendations for a user:** `GET /users/{user_id}/recommendations`
+-   `.env`: Fichier contenant les variables d'environnement, telles que la clé d'API (`VITE_API_KEY`).
+-   `.gitignore`: Fichier spécifiant les fichiers et dossiers à ignorer par Git.
+-   `components.json`: Fichier de configuration pour Shadcn UI, définissant le style et les alias des composants.
+-   `eslint.config.js`: Fichier de configuration pour ESLint, spécifiant les règles de linting pour le projet.
+-   `index.html`: Fichier HTML principal, point d'entrée de l'application web.
+-   `jsconfig.*.json`: Fichiers de configuration JavaScript pour différents contextes.
+-   `package.json`: Fichier de configuration npm contenant les dépendances et les scripts de gestion du projet.
+-   `postcss.config.js`: Fichier de configuration pour PostCSS, incluant les plugins Tailwind CSS et Autoprefixer.
+-   `src/`: Dossier contenant le code source de l'application :
+    -   `App.css` et `App.jsx`: Composant principal de l'application.
+    -   `assets/`: Ressources statiques comme les images et les icônes.
+    -   `components/`: Composants réutilisables de l'interface utilisateur.
+    -   `index.css`: Fichier CSS principal, important pour le fonctionnement de Tailwind CSS.
+    -   `main.jsx`: Point d'entrée JavaScript pour l'application.
+    -   `pages/`: Composants représentant les différentes pages du portfolio.
+-   `tailwind.config.js`: Fichier de configuration pour Tailwind CSS, définissant les thèmes, les polices et autres personnalisations de style.
+-   `vite.config.js`: Fichier de configuration pour Vite, spécifiant les alias de chemin et les plugins utilisés.
 
 ## 6. Configuration
 
-The application is configured using environment variables defined in `app/core/config.py`.  Important configuration parameters include:
+La configuration principale se trouve dans les fichiers :
 
-*   **`DATABASE_URL`:** The URL of the PostgreSQL database.
-*   **`CELERY_BROKER_URL`:** The URL of the Celery broker (e.g., Redis or RabbitMQ).
-*   **`CELERY_RESULT_BACKEND`:** The URL of the Celery result backend.
-*   **`API_VERSION`:** The API version.
-*   **`PROJECT_NAME`:** The name of the project.
+-   `.env` : contient la variable `VITE_API_KEY` nécessaire pour certaines fonctionnalités.
+-   `tailwind.config.js` : définit les thèmes, les polices et les breakpoints utilisés par Tailwind CSS.
+-   `vite.config.js` : spécifie les alias de chemin pour faciliter l'importation des modules dans le code source.
 
-These variables are loaded from the environment using Pydantic's `BaseSettings`. You can set these variables in a `.env` file or directly in your environment.
+## 7. Dépendances
 
-## 7. Architecture / Design Decisions
+Voici les principales dépendances utilisées dans ce projet :
 
-*   **FastAPI:** Chosen for its speed, ease of use, automatic data validation, and built-in API documentation (Swagger UI).  This simplifies API development and maintenance.
-*   **PostgreSQL:** Selected for its reliability, ACID compliance, and support for advanced features like JSONB data type, which can be useful for storing item metadata.
-*   **Celery:** Used to handle asynchronous tasks, such as model training, which can be computationally intensive and time-consuming.  This prevents blocking the main API thread and ensures responsiveness.
-*   **Collaborative Filtering & Content-Based Filtering:** These algorithms were selected for their effectiveness in generating personalized recommendations. The system is designed to allow for the addition of other recommendation algorithms in the future.
-*   **Docker:** Containerization with Docker ensures consistency across different environments and simplifies deployment.
-*   **Pydantic:** For request/response model validation and settings management.
-*   **SQLAlchemy:** For ORM and database interactions.
+-   **React**: Librairie JavaScript pour la construction d'interfaces utilisateur.
+-   **NextUI**: Framework UI pour React, offrant des composants esthétiques et fonctionnels. (`@nextui-org/react`)
+-   **Tailwind CSS**: Framework CSS utilitaire-first pour un style rapide et flexible.
+-   **Framer Motion**: Librairie pour créer des animations et des transitions fluides dans React. (`framer-motion`)
+-   **React Router DOM**: Pour la gestion de la navigation dans l'application. (`react-router-dom`)
+-   **Lucide React**: Bibliothèque d'icônes vectorielles. (`lucide-react`)
+-   **Axios**: Client HTTP pour effectuer des requêtes. (`axios`)
+-   **PrismJS**: Utiliser pour la coloration syntaxique du code. (`prismjs`)
+-   **React Icons**: Fournit une collection d'icônes pour React. (`react-icons`)
+-   **Clsx et Class Variance Authority**: Utilitaires pour la gestion des classes CSS. (`clsx`, `class-variance-authority`)
+-    **Spline**: Utiliser pour la création et l'intégration de scènes 3D interactives. (`@splinetool/react-spline`)
+-	 **ShadcnUI**	Framework UI utilisant Tailwind, Radix UI et Variants. (`@radix-ui/react-accordion`, `@radix-ui/react-icons`)
 
-The design prioritizes modularity, scalability, and maintainability. The use of service layers separates business logic from the API layer, making the code easier to test and modify.  Asynchronous task processing with Celery ensures that the API remains responsive even when handling computationally intensive tasks.
+## 8. Tests
 
-## 8. Dependencies
+Aucune documentation de tests n'est disponible dans le dépôt.
 
-The project dependencies are listed in `requirements.txt`. Key dependencies include:
+## 9. Déploiement / CI
 
-*   `fastapi`:  Web framework.
-*   `uvicorn`:  ASGI server for running the FastAPI application.
-*   `sqlalchemy`:  SQL toolkit and Object-Relational Mapper.
-*   `psycopg2-binary`:  PostgreSQL adapter for Python.
-*   `celery`:  Asynchronous task queue.
-*   `redis`:  In-memory data structure store (used as a Celery broker and result backend).
-*   `pydantic`: Data validation and settings management.
-*   `python-dotenv`: Loads environment variables from a .env file.
-*   `pytest`: Python testing framework.
-*   `requests`: For making HTTP requests (used in integration tests).
+Ce projet est conçu pour être déployé facilement sur diverses plateformes d'hébergement web. Les étapes de base pour le déploiement sont les suivantes :
 
-## 9. Testing
-
-The project includes both unit and integration tests located in the `tests/` directory.
-
-*   **Unit Tests:** Verify the functionality of individual components (e.g., services, models).
-*   **Integration Tests:** Verify the interaction between different components and the API endpoints.
-
-To run the tests:
-
-```bash
-pytest
-```
-
-Tests are configured with Pytest, utilizing fixtures defined in `tests/conftest.py` for setting up test databases.
-
-## 10. CI/CD and Deployment
-
-The provided `Dockerfile` allows you to build a Docker image for the application. You can then use Docker Compose to deploy the application along with its dependencies (e.g., PostgreSQL, Redis).
-
-1.  **Build the Docker image:**
+1.  Compiler l'application avec la commande :
 
     ```bash
-    docker build -t recommendation-system .
+    npm run build  # ou yarn build
     ```
 
-2.  **Run the application using Docker Compose:**
+2.  Déployer les fichiers compilés (généralement dans le dossier `dist`) sur votre plateforme d'hébergement préférée (par exemple, Netlify, Vercel, GitHub Pages, etc.).
 
-    ```bash
-    docker-compose up -d
-    ```
+Aucune configuration de CI/CD spécifique n'est fournie dans ce dépôt.
 
-This will start the application, the PostgreSQL database, and the Celery worker in separate containers. Ensure that your Docker Compose configuration (`docker-compose.yml`) is properly configured to connect to your database and Celery broker.
+## 10. Contribution
 
-The project is structured to be easily integrated into CI/CD pipelines using tools like GitHub Actions or GitLab CI. The Dockerfile and Docker Compose configuration simplify the deployment process and ensure consistency across different environments.
+Les contributions sont les bienvenues ! Si vous souhaitez contribuer à ce projet, veuillez suivre ces étapes :
 
-## 11. Contributing
+1.  Fork le dépôt.
+2.  Crée une nouvelle branche pour votre fonctionnalité ou correction de bug.
+3.  Implémente tes changements.
+4.  Soumet une pull request.
 
-Contributions are welcome!  To contribute to the project, please follow these steps:
+## 11. Licence
 
-1.  Fork the repository.
-2.  Create a new branch for your feature or bug fix.
-3.  Implement your changes.
-4.  Write tests to ensure your changes are working correctly.
-5.  Submit a pull request.
+Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
-Please adhere to the existing code style and conventions.
+## 12. Contact
 
-## 12. License
-
-This project is licensed under the MIT License - see the `LICENSE` file for details.
-
-## 13. Contact
-
-For questions or issues, please contact [your_email@example.com].
+-   Étudiant: **Abdessamad BOUIH**
+-   Superviseur: **GAHI Said**
+-   Institution: **ISTA Ouarzazate**
+-   Dépôt GitHub: https://github.com/abdessamad10bouih/devSamad
 ```
